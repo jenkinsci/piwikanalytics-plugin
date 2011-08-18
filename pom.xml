@@ -8,12 +8,12 @@
         <groupId>org.jvnet.hudson.plugins</groupId>
         <artifactId>plugin</artifactId>
         <version>1.319</version>
-        <!-- which version of Hudson is this plugin built against? -->
+        <!-- which version of Hudson/Jenkins is this plugin built against? -->
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>piwikanalytics</artifactId>
     <packaging>hpi</packaging>
-    <name>Hudson Piwik Analytics Plug-in</name>
+    <name>Jenkins/Hudson Piwik Analytics Plug-in</name>
     <version>1.1-SNAPSHOT</version>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/Piwik+Analytics+Plugin</url>
     <developers>
@@ -46,17 +46,10 @@
             </plugin>
         </plugins>
     </build>
-    <!-- get every artifact through maven.glassfish.org, which proxies all the artifacts that we need -->
     <repositories>
         <repository>
-            <id>m.g.o-public</id>
-            <url>http://maven.glassfish.org/content/groups/public/</url>
+            <id>maven.jenkins-ci.org</id>
+            <url>http://maven.jenkins-ci.org/content/repositories/releases</url>
         </repository>
     </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>m.g.o-public</id>
-            <url>http://maven.glassfish.org/content/groups/public/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
