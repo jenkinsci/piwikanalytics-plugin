@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <description>Piwik Analytics plugin that decorates all pages with tracking code.</description>
     <parent>
-        <groupId>org.jvnet.hudson.plugins</groupId>
+        <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.319</version>
+        <version>1.399</version>
         <!-- which version of Hudson/Jenkins is this plugin built against? -->
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -29,7 +29,7 @@
         <connection>scm:git:git://github.com/jenkinsci/piwikanalytics-plugin.git</connection>
         <developerConnection>
         scm:git:git@github.com:jenkinsci/piwikanalytics-plugin.git</developerConnection>
-    </scm>
+    </scm>   
     <distributionManagement>
         <repository>
             <id>maven.jenkins-ci.org</id>
