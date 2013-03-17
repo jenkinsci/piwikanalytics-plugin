@@ -1,21 +1,41 @@
 <j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
-	<j:if test="${it.siteId!=null &amp;&amp; it.piwikServer!=null &amp;&amp; it.piwikPath!=null}">
-		<!-- Piwik -->
-			<script type="text/javascript">
-			var pkBaseURL = (("https:" == document.location.protocol) ? "https://${it.piwikServer}${it.piwikPath}" : "http://${it.piwikServer}${it.piwikPath}");
-			document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-			</script><script type="text/javascript">
-			try {
-			var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", ${it.siteId});
-			<j:if test="${it.additionnalDownloadExtensions!=null}">
-			piwikTracker.addDownloadExtensions( "${it.additionnalDownloadExtensions}" ); 
-			</j:if>
-			piwikTracker.trackPageView();
-			piwikTracker.enableLinkTracking();
-			} catch( err ) {}
-			</script><noscript><p><img src="http://${it.piwikServer}${it.piwikPath}/piwik.php?idsite=${it.siteId}" style="border:0" alt=""/></p></noscript>
-		<!-- End Piwik Tag -->
-	</j:if>
-	<!-- piwik test insert -->
+    <j:choose>
+        <j:when test="${it.siteId!=null &amp;&amp; it.piwikServer!=null &amp;&amp; it.piwikPath!=null &amp;&amp; !it.useAsync}">
+            <!-- Piwik -->
+            <script type="text/javascript">
+                var pkBaseURL = (("https:" == document.location.protocol) ? "https://${it.piwikServer}${it.piwikPath}" : "http://${it.piwikServer}${it.piwikPath}");
+                document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+            </script><script type="text/javascript">
+            try {
+            var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", '${it.siteId}');
+            <j:if test="${it.additionnalDownloadExtensions!=null}">
+                piwikTracker.addDownloadExtensions( "${it.additionnalDownloadExtensions}" );
+            </j:if>
+            piwikTracker.trackPageView();
+            piwikTracker.enableLinkTracking();
+            } catch( err ) {}
+        </script><noscript><p><img src="http://${it.piwikServer}${it.piwikPath}/piwik.php?idsite=${it.siteId}" style="border:0" alt=""/></p></noscript>
+            <!-- End Piwik Tag -->
+        </j:when>
+        <j:when test="${it.siteId!=null &amp;&amp; it.piwikServer!=null &amp;&amp; it.piwikPath!=null &amp;&amp; it.useAsync}">
+            <!-- Piwik --> <script type="text/javascript">
+            var _paq = _paq || [];
+            (function(){ var u=(("https:" == document.location.protocol) ? "https://${it.piwikServer}${it.piwikPath}" : "http://${it.piwikServer}${it.piwikPath}");
+                _paq.push(['setSiteId', '${it.siteId}']);
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['trackPageView']);
+                _paq.push(['enableLinkTracking']);
+                <j:if test="${it.additionnalDownloadExtensions!=null}">
+                    _paq.push(['setDownloadExtensions', "${it.additionnalDownloadExtensions}"]);
+                </j:if>
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
+                s.parentNode.insertBefore(g,s); })();
+        </script>
+            <!-- End Piwik Code -->
+        </j:when>
+        <j:otherwise>
+            <!-- Piwik Analytics Debug: siteId=${it.siteId} piwikServer=${it.piwikServer} piwikPath=${it.piwikPath} useAsync=${it.useAsync}-->
+        </j:otherwise>
+    </j:choose>
 </j:jelly>
 
