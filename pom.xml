@@ -11,7 +11,7 @@
     </parent>
     <artifactId>piwikanalytics</artifactId>
     <packaging>hpi</packaging>
-    <name>Jenkins/Hudson Piwik Analytics Plug-in</name>
+    <name>Piwik Analytics Plug-in</name>
     <version>1.1.0-SNAPSHOT</version>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/Piwik+Analytics+Plugin</url>
     <developers>
