@@ -4,5 +4,5 @@
   Since we don't really have anything dynamic here, let's just use static HTML. 
 -->
 <div>
-  This plugin decorates all pages with piwik tracking code
+  This plugin decorates all pages with piwik tracking code. See the <a href="http://wiki.jenkins-ci.org/display/JENKINS/Piwik+Analytics+Plugin">plugin page</a> or the <a href="http://piwik.org/">Piwik homepage</a>.
 </div>
