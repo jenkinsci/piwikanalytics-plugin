@@ -11,6 +11,9 @@
     </f:entry>   
      <f:entry title="${%Additionnal Download Extensions}"  help="/plugin/piwikanalytics/additionnalDownloadExtensions.html">
       <f:textbox field="additionnalDownloadExtensions" default="jar|war|ear"/>
-    </f:entry> 
+    </f:entry>
+      <f:entry title="${%Use asynchronous piwik tracker?}" field="useAsync" help="/plugin/piwikanalytics/useAsync.html">
+          <f:checkbox/>
+      </f:entry>
   </f:section>
 </j:jelly>
