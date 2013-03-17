@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <description>Piwik Analytics plugin that decorates all pages with Piwik tracking code.</description>
     <parent>
@@ -12,7 +10,7 @@
     <artifactId>piwikanalytics</artifactId>
     <packaging>hpi</packaging>
     <name>Piwik Analytics Plug-in</name>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.0</version>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/Piwik+Analytics+Plugin</url>
     <developers>
         <developer>
@@ -20,7 +18,7 @@
             <name>Christophe Furmaniak</name>
             <email>christophe.furmaniak@gmail.com</email>
             <url>http://722.kalaari.net</url>
-            <roles></roles>
+            <roles />
         </developer>
     </developers>
     <scm>
