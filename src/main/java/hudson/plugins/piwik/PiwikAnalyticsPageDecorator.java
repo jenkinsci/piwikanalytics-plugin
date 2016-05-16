@@ -1,11 +1,12 @@
 package hudson.plugins.piwik;
 
+import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.StaplerRequest;
+
 import hudson.Extension;
 import hudson.Util;
 import hudson.model.PageDecorator;
 import net.sf.json.JSONObject;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
 
 @Extension
 public class PiwikAnalyticsPageDecorator extends PageDecorator {
@@ -15,7 +16,7 @@ public class PiwikAnalyticsPageDecorator extends PageDecorator {
     private String piwikServer;
     private String piwikPath;
     private String additionnalDownloadExtensions;
-    private boolean useAsync = false;
+    private boolean forceHttps = true;
 
     public PiwikAnalyticsPageDecorator() {
         super();
@@ -23,14 +24,18 @@ public class PiwikAnalyticsPageDecorator extends PageDecorator {
     }
 
     @DataBoundConstructor
-    public PiwikAnalyticsPageDecorator(String siteId, String piwikServer,
-                                       String piwikPath, String additionnalDEx, boolean useAsync) {
+    public PiwikAnalyticsPageDecorator(
+            String siteId,
+            String piwikServer,
+            String piwikPath,
+            String additionnalDEx,
+            boolean forceHttps) {
         this();
         setSiteId(siteId);
         setPiwikServer(piwikServer);
         setPiwikPath(piwikPath);
         setAdditionnalDownloadExtensions(additionnalDEx);
-        setUseAsync(useAsync);
+        setForceHttps(forceHttps);
     }
 
     @Override
@@ -79,11 +84,19 @@ public class PiwikAnalyticsPageDecorator extends PageDecorator {
         this.additionnalDownloadExtensions = additionnalDownloadExtensions;
     }
 
-    public boolean isUseAsync() {
-        return useAsync;
+    public boolean isForceHttps() {
+        return forceHttps;
     }
 
-    public void setUseAsync(boolean useAsync) {
-        this.useAsync = useAsync;
+    public void setForceHttps(boolean forceHttps) {
+        this.forceHttps = forceHttps;
+    }
+
+    public String getProtocolString() {
+        if( forceHttps ) {
+            return "https://";
+        } else {
+            return "//";
+        }
     }
 }
